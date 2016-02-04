@@ -1,11 +1,11 @@
 <form class="form-prevent-default" action="nuevaContrasenia" method="post">
   <div class="form-group">
-  	<label for="name">Contraseña actual:</label>
-  	<input type="password" class="form-control" name="currentPass" required="required" pattern="(?=^.{8,40}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z])(?=.*[¡@]).*$" maxlength="254" value="">
+      <label for="name">Contraseña actual:</label>
+      <input type="password" class="form-control" name="currentPass" required="required" pattern="(?=^.{8,40}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z])(?=.*[¡@]).*$" maxlength="254" value="">
   </div> <!-- form-group // Contraseña actual -->
   <div class="form-group">
-  	<label for="apellidos">Nueva contraseña:</label>
-  	<input type="password" class="form-control" name="newPass" required="required" pattern="(?=^.{8,40}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z])(?=.*[¡@]).*$" maxlength="254" value="">
+    <label for="apellidos">Nueva contraseña:</label>
+    <input type="password" class="form-control validarPass" name="newPass" required="required" pattern="(?=^.{8,40}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z])(?=.*[¡@]).*$" maxlength="254" value="">
   </div> <!-- form-group // Nueva contraseña -->
   <input type="submit" class="btn btn-primary pull-right" name="newAcountLogin" id="newAcountLogin" value="Registrar">
 </form>
