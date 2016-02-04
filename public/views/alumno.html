@@ -1,0 +1,12 @@
+{% extends "esqueleto.html" %}
+
+{% block container %}
+<div>
+	<a class="btn btn-info" href="#modal" data-toggle="modal">Cambiar contraseña</a>
+</div>
+Contenido que verá el alumno
+{% endblock %}
+
+{% block cuerpoModal %} {# cuerpoModal - Modal para cambiar contraseña #}
+    {% include "cambiarContrasenia.html" %}
+{% endblock %} {# cuerpoModal - Modal para cambiar contraseña #}

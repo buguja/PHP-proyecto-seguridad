@@ -1,0 +1,32 @@
+.ovFl-hidden{
+	overflow: hidden;
+}
+.clear-both{
+	clear: both;
+}
+.full-width{
+	width: 100%;
+	min-width: 100%;
+	max-width: 100%;
+}
+body> .container{
+	margin-top: 100px;
+}
+form{
+	margin-bottom: 30px;
+	overflow: hidden;
+}
+form i{
+	margin-bottom: 10px;
+}
+body> .container{
+	margin-top: 100px;
+}
+body> .footer{
+	margin: 0;
+	margin-top: 70px;
+	/*position: fixed;*/
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}

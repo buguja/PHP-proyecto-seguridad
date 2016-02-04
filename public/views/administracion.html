@@ -1,0 +1,45 @@
+{% extends "esqueleto.html" %}
+
+{% block container %}
+<div>
+	<a class="btn btn-info" href="#modal" data-toggle="modal">Cambiar contraseña</a>
+</div>
+<div class="row">
+	<div class="col-xs-6">
+		<h3>Ip bloqueadas</h3>
+        <form class='clear-both' action='eliminarIp' method='post'>
+            <ul class='list-group'>
+                {% for ip in ip_bloqueadas %}
+                    <li class='list-group-item ovFl-hidden'>
+                        {{ ip.descripcion }}
+                        <span class='badge'>
+                            <input type='checkbox' name='ips[]' value='{{ ip.id }}'>
+                        </span>
+                    </li>
+                {% endfor %}
+            </ul>
+            <input type='submit' class='btn btn-danger pull-right' value='Eliminar'>
+        </form>
+	</div>
+	<div class="col-xs-6">
+		<h3>Usuarios bloqueados</h3>
+        <form class='clear-both' action='eliminarUser' method='post'>
+            <ul class='list-group'>
+                {% for personaId in usuarios_bloqueados %}
+                    <li class='list-group-item ovFl-hidden'>
+                        {{ personaId }}
+                        <span class='badge'>
+                            <input type='checkbox' name='users[]' value='{{ personaId }}'>
+                        </span>
+                    </li>
+                {% endfor %}
+            </ul>
+            <input type='submit' class='btn btn-danger pull-right' value='Eliminar'>
+        </form>
+	</div>
+</div>
+{% endblock %}
+
+{% block cuerpoModal %} {# cuerpoModal - Modal para cambiar contraseña #}
+    {% include "cambiarContrasenia.html" %}
+{% endblock %} {# cuerpoModal - Modal para cambiar contraseña #}

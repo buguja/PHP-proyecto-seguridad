@@ -1,0 +1,54 @@
+{% extends "esqueleto.html" %}
+
+{% block container %} {# container - Login al sistema #}
+    <div class="pull-left col-sm-6">
+        <div class="thumbnail">
+            <img class="img-responsive full-width" src="{{ path }}img/test.jpg">
+            <div class="caption">
+                <h3 class="text-right">Caption</h3>
+                <p class="text-justify">Cuidemos el medio ambiente. Al realizar exámenes en ésta herramienta reducimos el consumo de papel, dejamos más arboles vivos.</p>
+                <p class="text-justify">Obten tu calificación tan rápido como tu conexión te lo permita</p>
+            </div> <!-- /.thumbnail -->
+        </div> <!-- /.panel -->
+    </div>
+    <div class="login pull-right col-sm-5">
+        <h3 class="pull-right">Iniciar sesión</h3>
+        <form class="clear-both" action="login" method="post">
+            <div class="form-group">
+                <label for="user">Usuario:</label>
+                <input type="email" name="user" id="user" class="form-control" autofocus placeholder="alguien@dominio.com" pattern=".{3,}" required="required" maxlength="254" value="abrew_javier@hotmail.com">
+                <i class="pull-right">Mínimo 3 caracteres</i>
+            </div> <!-- /.form-group // usuario -->
+            <div class="form-group clear-both">
+                <label for="pass">Contraseña:</label>
+                <input type="password" name="pass" id="pass" class="form-control" placeholder="*********" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" maxlength="254" title="Mínimo 8 caracteres" data-toggle="tooltip" value="@Jbg1991@">
+                <i class="pull-right">Mínimo 8 caracteres, 1 mayúscula, 1 minúscula, 1 número, 1 caracter especial</i>
+            </div> <!-- /.form-group // contraseña -->
+            <input type="submit" name="login" id="login" class="btn btn-primary pull-right clear-both" value="Entrar">
+        </form>
+        <p class="clear-both">¿No dispones de una cuenta para crear tus exámenes.?</p>
+        <p><a href="#modal" data-toggle="modal" class="label label-success">Regístrate</a> es ¡gratis!.</p>
+    </div> <!-- /.login -->
+{% endblock %} {# container - Login al sistema #}
+
+{% block cuerpoModal %} {# cuerpoModal - Modal para registrarse #}
+    <form action="nuevoUsuario" method="post">
+      <div class="form-group">
+        <label for="name">Nombre:</label>
+        <input type="text" class="form-control" name="name" id="name" required="required" pattern=".{3,254}" maxlength="254" value="">
+      </div> <!-- form-group // Nombre -->
+      <div class="form-group">
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" class="form-control" name="apellidos" id="apellidos" required="required" pattern=".{3,254}" maxlength="254" value="">
+      </div> <!-- form-group // Apellidos -->
+      <div class="form-group">
+        <label for="user">Usuario:</label>
+        <input type="email" class="form-control" name="user" id="user" required="required" pattern=".{5,254}" maxlength="254" placeholder="alguien@dominio.com" value="">
+      </div> <!-- form-group // Usuario -->
+      <div class="form-group">
+        <label for="pass">Contraseña:</label>
+        <input type="password" class="form-control" name="pass" id="pass" required="required" pattern="(?=^.{8,40}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z])(?=.*[¡@]).*$" meaxlength="40" placeholder="********" value="">
+      </div> <!-- form-group // Contraseña -->
+      <input type="submit" class="btn btn-primary pull-right" name="newAcountLogin" id="newAcountLogin" value="Registrar">
+    </form>
+{% endblock %} {# cuerpoModal - Modal para registrarse #}
