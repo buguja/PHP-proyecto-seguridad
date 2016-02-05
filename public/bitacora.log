@@ -209,3 +209,13 @@
 2016-02-04 13:02:07 Inicio de sesión <abrew_javier@hotmail.com> ::1
 2016-02-04 13:02:29 Inicio de sesión <abrew_javier@hotmail.com> ::1
 2016-02-04 13:02:58 Inicio de sesión <abrew_javier@hotmail.com> ::1
+2016-02-04 17:02:05 Inicio de sesión <abrew_javier@hotmail.com> ::1
+2016-02-04 17:02:21 Cierre de sesión <abrew_javier@hotmail.com> ::1
+2016-02-04 17:02:40 Inicio de sesión <alguien@dominio.com> ::1
+2016-02-04 17:02:46 Cierre de sesión <alguien@dominio.com> ::1
+2016-02-04 17:02:04 [ip:1]Intento de inicio de sesión <alguien@dominio.com:1> ::1
+2016-02-04 17:02:08 [ip:2]Intento de inicio de sesión <alguien@dominio.com:2> ::1
+2016-02-04 17:02:13 <3> Usuario bloqueado por exceso de intentos <alguien@dominio.com> ::1
+2016-02-04 17:02:13 [ip:3]Intento de inicio de sesión <alguien@dominio.com:3> ::1
+2016-02-04 17:02:15 Inicio de sesión <abrew_javier@hotmail.com> ::1
+2016-02-04 17:02:40 Cierre de sesión <abrew_javier@hotmail.com> ::1

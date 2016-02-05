@@ -117,7 +117,7 @@
         }
         $resultadoConsulta= $bdManager->realizarConsulta("SELECT pass.pass
         FROM pass, usuario
-        WHERE pass.persona_id=usuario.persona_id AND pass.persona_id='$user' AND usuario.intentos<3 ORDER BY antiguedad DESC LIMIT 1");
+        WHERE pass.persona_id=usuario.persona_id AND pass.persona_id='$user' AND usuario.intentos<3 ORDER BY pass.antiguedad DESC LIMIT 1");
         if($resultadoConsulta && (strcmp($resultadoConsulta[0]["pass"], sha1($pass)) == 0)){
             $consulta= "SELECT persona.persona_id as correo, persona.nombres, persona.apellidos, usuario.rol, usuario.ultimointento, pass.antiguedad FROM persona, pass, usuario WHERE persona.persona_id=usuario.persona_id AND pass.persona_id=usuario.persona_id and usuario.persona_id='$user' and pass.pass=sha1('$pass')";
             $resultadoConsulta= $bdManager->realizarConsulta($consulta);
@@ -211,7 +211,7 @@
             $bdManager= new BDManager();
             $currentPass= $app->request->post("currentPass");
             $newPass= $app->request->post("newPass");
-            $resultadoConsulta= $bdManager->realizarConsulta("SELECT antiguedad FROM pass WHERE persona_id='". $_SESSION["user"]->getCorreo(). "' and pass=sha1('" . $currentPass . "')");
+            $resultadoConsulta= $bdManager->realizarConsulta("SELECT antiguedad FROM pass WHERE persona_id='". $_SESSION["user"]->getCorreo(). "' AND pass=sha1('" . $currentPass . "')");
             if($resultadoConsulta){
                 $resultadoConsulta= $bdManager->realizarConsulta("SELECT antiguedad FROM pass WHERE persona_id='". $_SESSION["user"]->getCorreo(). "' and pass=sha1('" . $newPass . "')");
                 if($resultadoConsulta){
