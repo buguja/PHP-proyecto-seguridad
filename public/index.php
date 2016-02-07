@@ -169,6 +169,7 @@
         if(!empty($users)){
             foreach ($users as $value) {
                 $bdManager->realizarAccion("UPDATE usuario SET intentos=0 WHERE persona_id='$value'");
+                guardarBitacora("<". $_SESSION["user"]->getCorreo(). "> Liberó usuario bloqueado: <$value>", $app->request()->getIp());
             }
         }
         $app->redirect("administracion");
@@ -183,6 +184,7 @@
         if(!empty($ips)){
             foreach ($ips as $value) {
                 $bdManager->realizarAccion("DELETE FROM ipLock WHERE ipLock_id=$value");
+                guardarBitacora("<". $_SESSION["user"]->getCorreo(). "> Liberó ip bloqueada: <$value>", $app->request()->getIp());
             }
         }
         $app->redirect("administracion");
@@ -223,12 +225,14 @@
                     }
                     $bdManager->realizarAccion("INSERT INTO pass VALUES('" . $_SESSION["user"]->getCorreo() . "', sha1('" . $newPass . "'), NOW())");
                     echo "La contraseña se cambió correctamente.";
+                    guardarBitacora("<". $_SESSION["user"]->getCorreo(). "> Cambio de contraseña. ", $app->request()->getIp());
                 }
             }else{
                 echo "La contraseña actual que proporsionó no existe.";
             }
         }else{
             echo "Tu sesión fue terminada.";
+            guardarBitacora("<". $_SESSION["user"]->getCorreo(). "> Sesión expirada antes de cambio de contraseña. ", $app->request()->getIp());
         }
         echo "<br><a href='logout'>Regresar a principal</a>";
     });
