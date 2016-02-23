@@ -77,8 +77,8 @@
                     "menu_navbar"=> array(
                         array("href"=> "resolver-examen",
                         "item"=> "Resolver examen"),
-                        array("href"=> "consultar-calificacion",
-                              "item"=> "Consultar calificacin"),
+                        array("href"=> "Configuracion",
+                              "item"=> "configuracion"),
                         array("href"=> "logout",
                               "item"=> "Salir")
                     ),
@@ -96,6 +96,92 @@
         session_unset();
         session_destroy();
         $app->redirect($app->urlFor('root'));
+    });
+
+    $app->get('/calificar-examen', function() use($app, $twig){
+        if(isSessionExpired() || empty($_SESSION["user"])){
+            $app->redirect("logout");
+        }else{
+            echo $twig->render("noImplement.html",
+                array(
+                   "path"=> "",
+                   "navbar_brand"=> $_SESSION["user"]->getNombres() . " " . $_SESSION["user"]->getApellidos(),
+                   "menu_navbar"=> array(
+                       array("href"=> "calificar-examen",
+                             "item"=> "Calificar examen"),
+                       array("href"=> "aplicar-examen",
+                             "item"=> "Aplicar examen"),
+                       array("href"=> "reportes",
+                             "item"=> "Reportes"),
+                       array("href"=> "logout",
+                             "item"=> "Salir")
+                    ),
+                    "content"=> "Contenido que sólo verá el maestro. <h3>Calificar examen</h3>"
+               )
+            );
+        }
+    });
+
+    $app->get('/aplicar-examen', function() use($app, $twig){
+        if(isSessionExpired() || empty($_SESSION["user"])){
+            $app->redirect("logout");
+        }else{
+            echo $twig->render("noImplement.html",
+               array(
+                   "path"=> "",
+                   "navbar_brand"=> $_SESSION["user"]->getNombres() . " " . $_SESSION["user"]->getApellidos(),
+                   "menu_navbar"=> array(
+                       array("href"=> "calificar-examen",
+                             "item"=> "Calificar examen"),
+                       array("href"=> "aplicar-examen",
+                             "item"=> "Aplicar examen"),
+                       array("href"=> "reportes",
+                             "item"=> "Reportes"),
+                       array("href"=> "logout",
+                             "item"=> "Salir")
+                   ),
+                   "content"=> "Contenido que sólo verá el maestro. <h3>Aplicar examen</h3>"
+                )
+            );
+        }
+    });
+
+    $app->get('/reportes', function() use($app){
+        if(isSessionExpired() || empty($_SESSION["user"])){
+            $app->redirect("logout");
+        }else{
+            $app->redirect("administracion");
+        }
+    });
+
+    $app->get('/resolver-examen', function() use($app, $twig){
+        if(isSessionExpired() || empty($_SESSION["user"])){
+            $app->redirect("logout");
+        }else{
+            echo $twig->render("noImplement.html",
+                array(
+                   "path"=> "",
+                   "navbar_brand"=> $_SESSION["user"]->getNombres() . " " . $_SESSION["user"]->getApellidos(),
+                   "menu_navbar"=> array(
+                       array("href"=> "resolver-examen",
+                             "item"=> "Resolver examen"),
+                       array("href"=> "Configuracion",
+                             "item"=> "configuracion"),
+                       array("href"=> "logout",
+                             "item"=> "Salir")
+                    ),
+                    "content"=> "Contenido que sólo verá el Alumno. <h3>Resolver examen</h3>"
+                )
+            );
+        }
+    });
+
+    $app->get('/Configuracion', function() use($app){
+        if(isSessionExpired() || empty($_SESSION["user"])){
+            $app->redirect("logout");
+        }else{
+            $app->redirect("alumno");
+        }
     });
 
 /* ********************* POST ********************* */
@@ -128,6 +214,7 @@
                 $resultadoConsulta[0]["rol"],
                 $resultadoConsulta[0]["antiguedad"]
             );
+            //aquie reiniciar contador de alumno e ip
             guardarBitacora("Inicio de sesión <" . $_SESSION["user"]->getCorreo() . ">", $app->request()->getIp());
             if($_SESSION["user"]->getRol() === "admin"){
                 $app->redirect("administracion");
